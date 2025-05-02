@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda Virtual</title>
+    <!-- Bootstrap 5.3 CSS desde CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Iconos de Bootstrap desde CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <!-- Scripts de Bootstrap (necesarios para componentes interactivos) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        .hero-section {
+            background-color: #f8f9fa;
+            padding: 5rem 0;
+        }
+        .footer {
+            background-color: #212529;
+            color: white;
+            padding: 2rem 0;
+        }
+        .product-card {
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mi Tienda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categorias">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ofertas">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-2">
+                    <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-light me-2">
+                        <i class="bi bi-person"></i> Mi Cuenta
+                    </a>
+                    <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+                        <i class="bi bi-cart"></i> Carrito
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section / Banner -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold">Bienvenido a tu tienda online</h1>
+                    <p class="lead">Descubre nuestra colección de productos de alta calidad a precios increíbles.</p>
+                    <a href="#productos" class="btn btn-primary btn-lg">Ver Productos</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" class="img-fluid rounded" alt="Banner de la tienda">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías Destacadas -->
+    <section class="py-5 bg-light" id="categorias">
+        <div class="container">
+            <h2 class="text-center mb-4">Categorías Destacadas</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="py-3">
+                            <i class="bi bi-laptop display-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Electrónica</h5>
+                            <p class="card-text">Laptops, teléfonos y más</p>
+                            <a href="#" class="btn btn-outline-primary">Ver categoría</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="py-3">
+                            <i class="bi bi-tv display-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Hogar</h5>
+                            <p class="card-text">Decoración y electrodomésticos</p>
+                            <a href="#" class="btn btn-outline-primary">Ver categoría</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="py-3">
+                            <i class="bi bi-controller display-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Gaming</h5>
+                            <p class="card-text">Consolas y videojuegos</p>
+                            <a href="#" class="btn btn-outline-primary">Ver categoría</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="py-3">
+                            <i class="bi bi-bag display-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Moda</h5>
+                            <p class="card-text">Ropa y accesorios</p>
+                            <a href="#" class="btn btn-outline-primary">Ver categoría</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="py-5" id="productos">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Productos Destacados</h2>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Ordenar por
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item sort-option" data-sort="price-high" href="#">Mayor precio</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="price-low" href="#">Menor precio</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="popular" href="#">Más populares</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-4">
+                <!-- Producto 1 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <span class="position-absolute top-0 end-0 m-2 badge bg-danger">-25%</span>
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Laptop Ultra HD</h5>
+                            <p class="card-text">Potente laptop con procesador de última generación.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted">$1,200</span>
+                                    <span class="ms-2 fw-bold text-primary">$899</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary add-to-cart">Añadir al carrito</button>
+                                <a href="producto.html?id=1" class="btn btn-outline-secondary">Ver detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Smartphone Pro</h5>
+                            <p class="card-text">Smartphone con cámara de alta definición y gran batería.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-primary">$499</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <span class="position-absolute top-0 end-0 m-2 badge bg-success">Nuevo</span>
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Auriculares Inalámbricos</h5>
+                            <p class="card-text">Sonido envolvente y cancelación de ruido activa.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-primary">$129</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 4 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart TV 4K</h5>
+                            <p class="card-text">Televisor de última generación con resolución 4K.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-primary">$799</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 5 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Reloj Inteligente</h5>
+                            <p class="card-text">Monitorea tu actividad física y recibe notificaciones.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-primary">$149</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 6 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <span class="position-absolute top-0 end-0 m-2 badge bg-danger">-15%</span>
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Cámara Digital</h5>
+                            <p class="card-text">Captura momentos especiales con alta calidad.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-decoration-line-through text-muted">$599</span>
+                                    <span class="ms-2 fw-bold text-primary">$509</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 7 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 7">
+                        <div class="card-body">
+                            <h5 class="card-title">Tablet Pro</h5>
+                            <p class="card-text">Perfecta para trabajo y entretenimiento.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-primary">$349</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 8 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <span class="position-absolute top-0 end-0 m-2 badge bg-success">Nuevo</span>
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Producto 8">
+                        <div class="card-body">
+                            <h5 class="card-title">Altavoz Bluetooth</h5>
+                            <p class="card-text">Sonido de alta calidad para cualquier ocasión.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-primary">$89</span>
+                                </div>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">Añadir al carrito</button>
+                                <button class="btn btn-outline-secondary">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">Ver más productos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ofertas Especiales -->
+    <section class="py-5 bg-primary text-white" id="ofertas">
+        <div class="container">
+            <h2 class="text-center mb-4">Ofertas Especiales</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card bg-dark text-white">
+                        <img src="/api/placeholder/600/300" class="card-img opacity-50" alt="Oferta 1">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center">
+                            <h3 class="card-title">Descuentos de temporada</h3>
+                            <p class="card-text">Hasta 40% de descuento en productos seleccionados.</p>
+                            <a href="#" class="btn btn-light">Ver ofertas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-dark text-white">
+                        <img src="/api/placeholder/600/300" class="card-img opacity-50" alt="Oferta 2">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center">
+                            <h3 class="card-title">Envío gratis</h3>
+                            <p class="card-text">En compras superiores a $99.</p>
+                            <a href="#" class="btn btn-light">Más información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Lo que dicen nuestros clientes</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-person-circle display-5"></i>
+                            </div>
+                            <div class="text-warning mb-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="card-text">"Excelente servicio y productos de alta calidad. Definitivamente volveré a comprar aquí. La entrega fue rápida y todo llegó en perfecto estado."</p>
+                            <h5 class="card-title mb-0">María González</h5>
+                            <small class="text-muted">Cliente desde 2023</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-person-circle display-5"></i>
+                            </div>
+                            <div class="text-warning mb-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <p class="card-text">"Muy buena relación calidad-precio. El proceso de compra fue sencillo y la atención al cliente es de primera. Recomiendo esta tienda a todos mis amigos."</p>
+                            <h5 class="card-title mb-0">Juan Pérez</h5>
+                            <small class="text-muted">Cliente desde 2024</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-person-circle display-5"></i>
+                            </div>
+                            <div class="text-warning mb-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <p class="card-text">"Encontré exactamente lo que estaba buscando y a un precio increíble. El envío fue rápido y el empaque muy seguro. Volveré a comprar pronto."</p>
+                            <h5 class="card-title mb-0">Carlos Rodríguez</h5>
+                            <small class="text-muted">Cliente desde 2022</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suscripción Newsletter -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center">
+                        <h2 class="mb-3">Suscríbete a nuestro boletín</h2>
+                        <p class="mb-4">Recibe las últimas novedades, ofertas exclusivas y consejos directamente en tu correo.</p>
+                        <form class="row g-3 justify-content-center">
+                            <div class="col-md-8">
+                                <input type="email" class="form-control form-control-lg" placeholder="Tu correo electrónico">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-light btn-lg w-100">Suscribirse</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="py-5" id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Contáctanos</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name" placeholder="Tu nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="Tu correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Asunto</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Asunto del mensaje">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Tu mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <h2 class="mb-4">Información de contacto</h2>
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="bi bi-geo-alt-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Dirección</h5>
+                            <p>Av. Principal 123, Ciudad, País</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="bi bi-telephone-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Teléfono</h5>
+                            <p>+123 456 7890</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="bi bi-envelope-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Email</h5>
+                            <p>info@mitienda.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="bi bi-clock-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Horario de atención</h5>

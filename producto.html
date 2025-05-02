@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - Mi Tienda Virtual</title>
+    <!-- Bootstrap 5.3 CSS desde CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Iconos de Bootstrap desde CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <!-- Scripts de Bootstrap (necesarios para componentes interactivos) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        .product-image-thumbnail {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .product-image-thumbnail:hover {
+            opacity: 0.7;
+        }
+        .footer {
+            background-color: #212529;
+            color: white;
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Mi Tienda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#categorias">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#ofertas">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-2">
+                    <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-light me-2">
+                        <i class="bi bi-person"></i> Mi Cuenta
+                    </a>
+                    <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+                        <i class="bi bi-cart"></i> Carrito
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal del Producto -->
+    <div class="container my-5">
+        <!-- Migas de pan / Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="index.html#productos">Productos</a></li>
+                <li class="breadcrumb-item"><a href="#">Electrónica</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Laptop Ultra HD</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <!-- Galería de imágenes -->
+            <div class="col-md-6 mb-4">
+                <div class="card border-0">
+                    <!-- Imagen principal -->
+                    <div class="text-center mb-3">
+                        <img src="/api/placeholder/600/400" id="mainProductImage" class="img-fluid rounded" alt="Producto principal">
+                    </div>
+                    <!-- Miniaturas -->
+                    <div class="d-flex justify-content-center">
+                        <div class="mx-2">
+                            <img src="/api/placeholder/100/100" class="img-thumbnail product-image-thumbnail" alt="Miniatura 1" onclick="document.getElementById('mainProductImage').src = this.src.replace('100/100', '600/400')">
+                        </div>
+                        <div class="mx-2">
+                            <img src="/api/placeholder/100/100" class="img-thumbnail product-image-thumbnail" alt="Miniatura 2" onclick="document.getElementById('mainProductImage').src = this.src.replace('100/100', '600/400')">
+                        </div>
+                        <div class="mx-2">
+                            <img src="/api/placeholder/100/100" class="img-thumbnail product-image-thumbnail" alt="Miniatura 3" onclick="document.getElementById('mainProductImage').src = this.src.replace('100/100', '600/400')">
+                        </div>
+                        <div class="mx-2">
+                            <img src="/api/placeholder/100/100" class="img-thumbnail product-image-thumbnail" alt="Miniatura 4" onclick="document.getElementById('mainProductImage').src = this.src.replace('100/100', '600/400')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información del producto -->
+            <div class="col-md-6">
+                <h1 class="mb-2">Laptop Ultra HD</h1>
+                <div class="mb-3">
+                    <div class="text-warning d-inline-block me-2">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <span class="text-muted">(127 reseñas)</span>
+                </div>
+                <div class="mb-3">
+                    <span class="text-decoration-line-through text-muted fs-4">$1,200</span>
+                    <span class="ms-2 fs-2 fw-bold text-primary">$899</span>
+                    <span class="badge bg-danger ms-2">25% OFF</span>
+                </div>
+                <p class="text-success mb-4"><i class="bi bi-check-circle-fill"></i> En stock - Entrega en 24-48 horas</p>
+                
+                <div class="mb-4">
+                    <h5>Descripción:</h5>
+                    <p>Potente laptop con procesador de última generación, perfecta para profesionales y gamers. Con pantalla Ultra HD, 16GB de RAM y 1TB de almacenamiento SSD para un rendimiento excepcional.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Características principales:</h5>
+                    <ul>
+                        <li>Procesador Intel Core i7 de 12va generación</li>
+                        <li>16GB de memoria RAM DDR5</li>
+                        <li>1TB de almacenamiento SSD NVMe</li>
+                        <li>Pantalla de 15.6" Ultra HD (3840 x 2160)</li>
+                        <li>Tarjeta gráfica NVIDIA GeForce RTX 3070</li>
+                        <li>Sistema operativo Windows 11 Pro</li>
+                    </ul>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Selecciona una variante:</h5>
+                    <div class="btn-group mb-3" role="group" aria-label="Color options">
+                        <input type="radio" class="btn-check" name="color" id="color1" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="color1">Negro</label>
+                        
+                        <input type="radio" class="btn-check" name="color" id="color2" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="color2">Plata</label>
+                        
+                        <input type="radio" class="btn-check" name="color" id="color3" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="color3">Azul</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <button class="btn btn-outline-secondary" type="button" id="decrementBtn">-</button>
+                                <input type="text" class="form-control text-center" value="1" id="quantityInput">
+                                <button class="btn btn-outline-secondary" type="button" id="incrementBtn">+</button>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <button class="btn btn-primary w-100" id="addToCartBtn">
+                                <i class="bi bi-cart-plus"></i> Añadir al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-dark">
+                        <i class="bi bi-heart"></i> Añadir a favoritos
+                    </button>
+                    <button class="btn btn-outline-secondary">
+                        <i class="bi bi-share"></i> Compartir producto
+                    </button>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-truck text-primary fs-4 me-3"></i>
+                    <div>
+                        <h6 class="mb-0">Envío gratis</h6>
+                        <small class="text-muted">En pedidos superiores a $99</small>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-arrow-return-left text-primary fs-4 me-3"></i>
+                    <div>
+                        <h6 class="mb-0">Devolución garantizada</h6>
+                        <small class="text-muted">30 días para cambios o devoluciones</small>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-shield-check text-primary fs-4 me-3"></i>
+                    <div>
+                        <h6 class="mb-0">Garantía de 2 años</h6>
+                        <small class="text-muted">Servicio técnico incluido</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestañas de información adicional -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab" aria-controls="specs" aria-selected="true">Especificaciones</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reseñas</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="false">Preguntas frecuentes</button>
+                    </li>
+                </ul>
+                <div class="tab-content p-4 border border-top-0 rounded-bottom" id="productTabsContent">
+                    <!-- Especificaciones -->
+                    <div class="tab-pane fade show active" id="specs" role="tabpanel" aria-labelledby="specs-tab">
+                        <h4>Especificaciones técnicas</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" style="width: 30%">Procesador</th>
+                                        <td>Intel Core i7-12700H (14 núcleos, hasta 4.7 GHz)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Memoria RAM</th>
+                                        <td>16GB DDR5 (expandible hasta 64GB)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Almacenamiento</th>
+                                        <td>1TB SSD NVMe PCIe 4.0</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Pantalla</th>
+                                        <td>15.6" Ultra HD (3840 x 2160) IPS, 100% sRGB, Anti-reflejos</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tarjeta gráfica</th>
+                                        <td>NVIDIA GeForce RTX 3070 8GB GDDR6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Sistema operativo</th>
+                                        <td>Windows 11 Pro (64 bits)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Conectividad</th>
+                                        <td>Wi-Fi 6E, Bluetooth 5.2, Thunderbolt 4, USB 3.2, HDMI 2.1</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Batería</th>
+                                        <td>Batería de litio de 6 celdas (90Wh), hasta 8 horas</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dimensiones</th>
+                                        <td>356.7 x 230.2 x 19.9 mm</td>
+                                    </tr>
